@@ -1,0 +1,12 @@
+Cara membuka website:
+
+1. Extract file ZIP terlebih dahulu.
+2. Buka folder HizkiaKenjiNg_SD_RobloxFutureDeveloper.
+3. Double click file index.html.
+4. Website bisa dibuka di Google Chrome, Microsoft Edge, Firefox, atau browser lain.
+
+Catatan:
+- Website ini tidak perlu hosting.
+- Website ini tidak memakai backend, database, atau framework.
+- Semua file yang dibutuhkan sudah ada di dalam folder ini.
+- Folder js hanya berisi JavaScript ringan untuk demo EduQuest.
