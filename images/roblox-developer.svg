@@ -1,0 +1,43 @@
+<svg width="900" height="720" viewBox="0 0 900 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="38" y="45" width="824" height="585" rx="42" fill="#E9FBFF"/>
+  <path d="M77 190H814" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M77 292H814" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M77 394H814" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M77 496H814" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M205 89V585" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M347 89V585" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M489 89V585" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M631 89V585" stroke="#BDEFFF" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="735" cy="155" r="70" fill="#FFD166"/>
+  <circle cx="160" cy="540" r="76" fill="#67D9A5"/>
+  <rect x="135" y="117" width="478" height="326" rx="26" fill="#075985"/>
+  <rect x="166" y="151" width="416" height="245" rx="16" fill="#C8F1FF"/>
+  <rect x="104" y="443" width="540" height="48" rx="13" fill="#064F75"/>
+  <rect x="212" y="491" width="325" height="28" rx="10" fill="#11C5DF"/>
+  <text x="374" y="104" text-anchor="middle" fill="#075985" font-family="Arial, Helvetica, sans-serif" font-size="35" font-weight="800">ROBLOX STUDIO</text>
+  <rect x="196" y="185" width="155" height="155" rx="18" fill="#FFFFFF"/>
+  <rect x="253" y="243" width="45" height="45" transform="rotate(14 253 243)" fill="#11C5DF"/>
+  <circle cx="224" cy="255" r="15" fill="#075985"/>
+  <circle cx="323" cy="255" r="15" fill="#075985"/>
+  <path d="M222 342C245 318 303 318 326 342" stroke="#075985" stroke-width="11" stroke-linecap="round"/>
+  <rect x="394" y="184" width="148" height="24" rx="12" fill="#075985"/>
+  <rect x="394" y="230" width="112" height="20" rx="10" fill="#11C5DF"/>
+  <rect x="394" y="268" width="136" height="20" rx="10" fill="#67D9A5"/>
+  <rect x="394" y="306" width="90" height="20" rx="10" fill="#FFD166"/>
+  <rect x="646" y="246" width="156" height="230" rx="24" fill="#FFFFFF" stroke="#BDEFFF" stroke-width="5"/>
+  <text x="724" y="292" text-anchor="middle" fill="#075985" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800">TD MAP</text>
+  <path d="M682 433C725 433 682 338 748 338C795 338 774 403 794 403" stroke="#11C5DF" stroke-width="16" stroke-linecap="round"/>
+  <rect x="671" y="323" width="32" height="32" rx="7" fill="#075985"/>
+  <rect x="743" y="315" width="38" height="38" rx="8" fill="#67D9A5"/>
+  <rect x="734" y="393" width="36" height="36" rx="8" fill="#FFD166"/>
+  <circle cx="690" cy="436" r="17" fill="#FF8A7A"/>
+  <rect x="94" y="524" width="254" height="112" rx="22" fill="#FFFFFF" stroke="#BDEFFF" stroke-width="5"/>
+  <text x="130" y="565" fill="#075985" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800">DEBUG PANEL</text>
+  <rect x="130" y="586" width="88" height="14" rx="7" fill="#11C5DF"/>
+  <rect x="130" y="610" width="154" height="14" rx="7" fill="#67D9A5"/>
+  <rect x="238" y="586" width="58" height="14" rx="7" fill="#FFD166"/>
+  <path d="M652 530H805" stroke="#11C5DF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M679 566H833" stroke="#075985" stroke-width="18" stroke-linecap="round"/>
+  <path d="M610 602H742" stroke="#67D9A5" stroke-width="18" stroke-linecap="round"/>
+  <text x="450" y="681" text-anchor="middle" fill="#075985" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="800">IDEA + CODE + DEBUG + IMPROVE</text>
+</svg>
