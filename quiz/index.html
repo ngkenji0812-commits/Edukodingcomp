@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>MathRush 7</title>
+    <meta name="claude:viewport-fit-sides" content="cover" />
+    <meta name="description" content="A fast, game-style quiz for Grade 7 math: integers, fractions, ratios, percents, equations, geometry, and probability." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Lexend:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="brand" id="brandBtn" type="button" aria-label="MathRush 7, go to the start screen">
+          <span class="brand-word">MathRush</span><span class="brand-seven" aria-hidden="true">7</span>
+        </button>
+        <div class="topbar-actions">
+          <div class="quit-wrap" id="quitWrap" hidden>
+            <button class="ghost-btn" id="quitBtn" type="button">Quit</button>
+            <div class="quit-confirm" id="quitConfirm" hidden>
+              <span>End this game? Your score will not be saved.</span>
+              <button class="ghost-btn danger" id="quitYes" type="button">End game</button>
+              <button class="ghost-btn" id="quitNo" type="button">Keep playing</button>
+            </div>
+          </div>
+          <button class="icon-btn" id="soundBtn" type="button" aria-pressed="true" title="Sound on">
+            <span class="sr-only" id="soundLabel">Sound on</span>
+            <span id="soundIcon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Start screen -->
+      <section class="screen home" id="screenHome" aria-labelledby="homeTitle">
+        <div class="home-grid">
+          <div class="home-main">
+            <p class="eyebrow">Grade 7 math quiz game</p>
+            <h1 class="home-title" id="homeTitle">Fast questions. <mark>Real 7th grade math.</mark></h1>
+            <p class="lede">
+              Answer quickly for a speed bonus, build streaks to unlock power-ups, and finish with a
+              topic-by-topic breakdown of what to practice next.
+            </p>
+
+            <form class="setup" id="setupForm" novalidate>
+              <div class="field">
+                <label for="nameInput">Your nickname</label>
+                <input class="text-input" id="nameInput" name="nickname" maxlength="16" placeholder="e.g. Kenji" autocomplete="nickname" />
+              </div>
+
+              <fieldset class="field">
+                <legend>
+                  Topics
+                  <button class="link-btn" id="allTopicsBtn" type="button">Select all</button>
+                </legend>
+                <div class="chips" id="topicChips"></div>
+              </fieldset>
+
+              <div class="field-row">
+                <fieldset class="field">
+                  <legend>Questions</legend>
+                  <div class="seg">
+                    <label><input type="radio" name="count" id="count-10" value="10" /><span>10</span></label>
+                    <label><input type="radio" name="count" id="count-15" value="15" /><span>15</span></label>
+                    <label><input type="radio" name="count" id="count-20" value="20" /><span>20</span></label>
+                  </div>
+                </fieldset>
+                <fieldset class="field">
+                  <legend>Time per question</legend>
+                  <div class="seg">
+                    <label><input type="radio" name="timer" id="timer-20" value="20" /><span>20s</span></label>
+                    <label><input type="radio" name="timer" id="timer-30" value="30" /><span>30s</span></label>
+                    <label><input type="radio" name="timer" id="timer-45" value="45" /><span>45s</span></label>
+                    <label><input type="radio" name="timer" id="timer-0" value="0" /><span>No timer</span></label>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="setup-foot">
+                <button class="big-btn" id="startBtn" type="submit">Start quiz</button>
+                <p class="form-msg" id="formMsg" role="alert" hidden>Pick at least one topic to start.</p>
+              </div>
+            </form>
+          </div>
+
+          <aside class="home-side" aria-label="Warm-up and scores">
+            <section class="panel warmup" aria-labelledby="warmupTitle">
+              <div class="panel-head">
+                <h2 id="warmupTitle">Warm-up</h2>
+                <button class="link-btn" id="warmupNew" type="button">New question</button>
+              </div>
+              <p class="warmup-q" id="warmupQ"></p>
+              <div class="warmup-tiles" id="warmupTiles"></div>
+              <p class="warmup-msg" id="warmupMsg" aria-live="polite">Tap an answer. This one does not count.</p>
+            </section>
+
+            <section class="panel" aria-labelledby="homeBoardTitle">
+              <h2 id="homeBoardTitle">Top scores on this device</h2>
+              <ol class="board" id="homeBoard"></ol>
+              <p class="board-empty" id="homeBoardEmpty">No scores yet. Finish a quiz and your score shows up here.</p>
+            </section>
+
+            <section class="panel" aria-labelledby="rulesTitle">
+              <h2 id="rulesTitle">How scoring works</h2>
+              <dl class="rules">
+                <div><dt>Up to 1,000</dt><dd>points for each right answer. The faster you answer, the more you get.</dd></div>
+                <div><dt>+100 a streak</dt><dd>for every answer in a row you get right, up to +500.</dd></div>
+                <div><dt>Power-ups</dt><dd>You start with one and earn another every 3 in a row: 50/50, Double points, Time freeze, or Streak shield.</dd></div>
+              </dl>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <!-- 3, 2, 1 countdown -->
+      <section class="screen countdown" id="screenCountdown" hidden aria-live="assertive">
+        <div class="count-num" id="countNum">3</div>
+      </section>
+
+      <!-- Question screen -->
+      <section class="screen play" id="screenPlay" hidden aria-label="Question">
+        <div class="play-wrap">
+          <div class="hud">
+            <div class="hud-left">
+              <span class="q-count" id="qCount">Question 1 of 10</span>
+              <span class="topic-tag" id="qTopic">Integers</span>
+            </div>
+            <div class="hud-right">
+              <div class="hud-stat" id="timeStat"><span class="hud-label">Time</span><span class="hud-val" id="timeVal">30</span></div>
+              <div class="hud-stat" id="streakStat"><span class="hud-label">Streak</span><span class="hud-val" id="streakVal">0</span></div>
+              <div class="hud-stat"><span class="hud-label">Score</span><span class="hud-val" id="scoreVal">0</span></div>
+            </div>
+          </div>
+          <div class="timer" id="timer" aria-hidden="true"><div class="timer-fill" id="timerFill"></div></div>
+
+          <div class="q-card">
+            <div class="q-figure" id="qFigure" hidden></div>
+            <div class="q-text" id="qText" tabindex="-1"></div>
+          </div>
+
+          <div class="powerups" id="powerups" aria-label="Power-ups"></div>
+
+          <div class="answers" id="answers"></div>
+
+          <form class="typein" id="typeinForm" hidden novalidate>
+            <div class="typein-field">
+              <span class="typein-affix" id="typeinPrefix"></span>
+              <label for="typeinInput" class="sr-only">Type your answer</label>
+              <input id="typeinInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type your answer" />
+              <span class="typein-affix" id="typeinUnit"></span>
+            </div>
+            <button class="big-btn" id="typeinSubmit" type="submit">Submit</button>
+            <p class="typein-help">Type a number. Negatives and decimals are fine, like −4 or 2.5.</p>
+          </form>
+        </div>
+
+        <div class="feedback" id="feedback" hidden role="status">
+          <div class="feedback-inner">
+            <div class="fb-head">
+              <span class="fb-icon" id="fbIcon" aria-hidden="true"></span>
+              <div class="fb-text">
+                <p class="fb-title" id="fbTitle"></p>
+                <p class="fb-sub" id="fbSub"></p>
+              </div>
+              <span class="fb-points" id="fbPoints"></span>
+            </div>
+            <button class="big-btn fb-next" id="nextBtn" type="button">
+              <span class="next-fill" id="nextFill" aria-hidden="true"></span>
+              <span class="next-label" id="nextLabel">Next question</span>
+            </button>
+            <div class="fb-explain" id="fbExplain"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results screen -->
+      <section class="screen results" id="screenResults" hidden aria-labelledby="resTitle">
+        <div class="results-grid">
+          <section class="panel res-summary">
+            <p class="eyebrow" id="resEyebrow">Quiz complete</p>
+            <h1 class="res-title" id="resTitle">Nice work!</h1>
+            <div class="res-top">
+              <div class="ring" id="ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="ring-track" cx="60" cy="60" r="52" />
+                  <circle class="ring-bar" id="ringBar" cx="60" cy="60" r="52" />
+                </svg>
+                <div class="ring-label"><span id="resAcc">0%</span><small>correct</small></div>
+              </div>
+              <div class="res-score">
+                <span class="hud-label">Final score</span>
+                <span class="res-score-num" id="resScore">0</span>
+                <span class="res-rank" id="resRank"></span>
+              </div>
+            </div>
+            <dl class="res-stats">
+              <div><dt>Correct</dt><dd id="resCorrect">0 / 0</dd></div>
+              <div><dt>Best streak</dt><dd id="resStreak">0</dd></div>
+              <div><dt>Avg. time</dt><dd id="resTime">0 s</dd></div>
+              <div><dt>Power-ups used</dt><dd id="resPowerups">0</dd></div>
+            </dl>
+            <div class="res-actions">
+              <button class="big-btn" id="againBtn" type="button">Play again</button>
+              <button class="big-btn alt" id="retryBtn" type="button">Practice the ones I missed</button>
+              <button class="ghost-btn" id="homeBtn" type="button">Change settings</button>
+            </div>
+          </section>
+
+          <div class="res-side">
+            <section class="panel" aria-labelledby="topicTitle">
+              <h2 id="topicTitle">By topic</h2>
+              <ul class="topic-bars" id="topicBars"></ul>
+            </section>
+            <section class="panel" aria-labelledby="resBoardTitle">
+              <h2 id="resBoardTitle">Top scores on this device</h2>
+              <ol class="board" id="resBoard"></ol>
+              <p class="board-empty" id="resBoardEmpty">No saved scores yet.</p>
+            </section>
+          </div>
+
+          <section class="panel review" aria-labelledby="reviewTitle">
+            <h2 id="reviewTitle">Review your answers</h2>
+            <ol class="review-list" id="reviewList"></ol>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
